@@ -24,7 +24,7 @@ export default function Home() {
 
   const fetchData = async (category) => {
     try {
-      const res = await fetch(`http://localhost:5000/${category}`);
+      const res = await fetch(`https://restoran-bot-igvo.onrender.com/${category}`);
       const result = await res.json();
       setData(result);
     } catch (error) { 
@@ -65,7 +65,7 @@ export default function Home() {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/orders/new", {
+      const res = await fetch("https://restoran-bot-igvo.onrender.com/orders/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData)
@@ -87,9 +87,13 @@ export default function Home() {
   };
 
   // QIDIRUV FILTRI
-  const filteredData = data.filter(item => 
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Eski holati:
+// const filteredData = data.filter(item => ...
+
+// Yangi xavfsiz holati:
+const filteredData = Array.isArray(data) ? data.filter(item => 
+  item.name.toLowerCase().includes(searchTerm.toLowerCase())
+) : [];
 
   return (
     <main className="min-h-screen p-8 bg-[#fdfdfd] text-gray-900">
