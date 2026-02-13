@@ -24,7 +24,7 @@ export default function Home() {
 
   const fetchData = async (category) => {
     try {
-      const res = await fetch(`https://restoran-bot-igvo.onrender.com/${category}`);
+      const res = await fetch(`http://localhost:5000/${category}`);
       const result = await res.json();
       setData(result);
     } catch (error) { 
@@ -65,7 +65,7 @@ export default function Home() {
     };
 
     try {
-      const res = await fetch("https://restoran-bot-igvo.onrender.com/orders/new", {
+      const res = await fetch("http://localhost:5000/orders/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData)
